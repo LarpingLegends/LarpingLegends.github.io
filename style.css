@@ -1,0 +1,217 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: radial-gradient(circle at top, #1b2a6b, #050816 55%, #000);
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  padding: 25px 15px;
+}
+
+h1 {
+  font-size: 2.3rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  color: #c9d6ff;
+}
+
+#scoreBox {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  z-index: 10;
+}
+
+main {
+  width: min(1050px, 92%);
+  margin: auto;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+}
+
+.card h2 {
+  margin-bottom: 12px;
+}
+
+.card p {
+  line-height: 1.6;
+  color: #e5e9ff;
+  margin-bottom: 20px;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(135deg, #4f8cff, #8a4fff);
+  padding: 12px 18px;
+  border-radius: 18px;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(79, 140, 255, 0.35);
+}
+
+.hidden {
+  display: none;
+}
+
+.space-scene {
+  position: relative;
+  height: 360px;
+  overflow: hidden;
+  border-radius: 25px;
+  background: radial-gradient(circle at center, #243b7a, #070b1f 60%, #000);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.stars,
+.stars::before,
+.stars::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px);
+  background-size: 80px 80px, 120px 120px;
+  background-position: 0 0, 40px 60px;
+  opacity: 0.7;
+  animation: moveStars 8s linear infinite;
+}
+
+.rocket {
+  position: absolute;
+  left: 8%;
+  top: 45%;
+  font-size: 4rem;
+  z-index: 2;
+  animation: flyRocket 5s ease-in-out infinite;
+}
+
+.info-box {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 650px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 20px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+#overviewBtn {
+  display: block;
+  margin: 20px auto;
+}
+
+.solar-system {
+  position: relative;
+  height: 560px;
+  margin-top: 20px;
+  border-radius: 25px;
+  overflow: hidden;
+  background: radial-gradient(circle, rgba(255,255,255,0.08), rgba(0,0,0,0.55));
+}
+
+.sun {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4.5rem;
+  filter: drop-shadow(0 0 35px orange);
+}
+
+.planet {
+  position: absolute;
+  width: 82px;
+  height: 82px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  background: #777;
+  border: 2px solid rgba(255,255,255,0.55);
+  animation: float 3s ease-in-out infinite;
+}
+
+.mercury { left: 45%; top: 19%; background: #8c8c8c; }
+.venus   { left: 65%; top: 24%; background: #d6a45c; }
+.earth   { left: 74%; top: 48%; background: #2e8bff; }
+.mars    { left: 61%; top: 72%; background: #c4512b; }
+.jupiter { left: 35%; top: 76%; background: #d39b65; }
+.saturn  { left: 17%; top: 55%; background: #cbb67c; }
+.uranus  { left: 21%; top: 28%; background: #7ad7e5; }
+.neptune { left: 42%; top: 7%; background: #375fff; }
+
+#answers {
+  display: grid;
+  gap: 12px;
+  margin: 20px auto;
+  max-width: 650px;
+}
+
+.answer-btn {
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+#feedback {
+  min-height: 30px;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #aab7e8;
+}
+
+@keyframes flyRocket {
+  0% { transform: translate(0, 0) rotate(20deg); }
+  50% { transform: translate(680px, -60px) rotate(20deg); }
+  100% { transform: translate(0, 0) rotate(20deg); }
+}
+
+@keyframes moveStars {
+  from { transform: translateX(0); }
+  to { transform: translateX(-120px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@media (max-width: 700px) {
+  h1 { font-size: 1.7rem; }
+  .solar-system { height: 680px; }
+  .planet { width: 72px; height: 72px; }
+  #scoreBox { position: static; display: inline-block; margin-top: 12px; }
+}

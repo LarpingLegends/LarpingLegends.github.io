@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mission Système Solaire</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🚀 Mission Système Solaire</h1>
+    <p>Explore les planètes, lis les indices, puis réponds aux questions.</p>
+    <div id="scoreBox">Score : <span id="score">0</span></div>
+  </header>
+
+  <main>
+    <section id="intro" class="card">
+      <h2>Départ de la Terre</h2>
+      <p>
+        Tu es un astronaute en mission. Clique sur <strong>Commencer</strong> pour lancer la fusée
+        et visiter les planètes du système solaire.
+      </p>
+      <button id="startBtn">Commencer la mission</button>
+    </section>
+
+    <section id="travel" class="hidden">
+      <div class="space-scene">
+        <div class="rocket">🚀</div>
+        <div class="stars"></div>
+      </div>
+      <div id="planetInfo" class="info-box"></div>
+      <button id="overviewBtn" class="hidden">Voir l’aperçu des planètes</button>
+    </section>
+
+    <section id="overview" class="hidden card">
+      <h2>Aperçu du système solaire</h2>
+      <p>Clique sur une planète pour répondre à une question.</p>
+      <div class="solar-system">
+        <div class="sun">☀️</div>
+        <button class="planet mercury" data-planet="Mercure">Mercure</button>
+        <button class="planet venus" data-planet="Vénus">Vénus</button>
+        <button class="planet earth" data-planet="Terre">Terre</button>
+        <button class="planet mars" data-planet="Mars">Mars</button>
+        <button class="planet jupiter" data-planet="Jupiter">Jupiter</button>
+        <button class="planet saturn" data-planet="Saturne">Saturne</button>
+        <button class="planet uranus" data-planet="Uranus">Uranus</button>
+        <button class="planet neptune" data-planet="Neptune">Neptune</button>
+      </div>
+    </section>
+
+    <section id="quiz" class="hidden card">
+      <h2 id="quizTitle"></h2>
+      <p id="question"></p>
+      <div id="answers"></div>
+      <p id="feedback"></p>
+      <button id="backBtn">Retour à l’aperçu</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Projet ICS3U — HTML, CSS et JavaScript</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
