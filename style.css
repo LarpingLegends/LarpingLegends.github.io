@@ -17,6 +17,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 body {
   line-height: 1; }
 
+a {
+  color: black;
+  background-color: white;
+  font-weight: bold;
+}
+
 ol, ul {
   list-style: none; }
 
