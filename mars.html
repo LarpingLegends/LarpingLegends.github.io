@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Quiz Mars</title>
+</head>
+<body>
+
+<h1>Quiz sur Mars</h1>
+
+<label>Nom :</label>
+<input type="text" id="txtNom"><br><br>
+
+<form>
+
+  <!-- Q1 -->
+  <p>1. Quel est le surnom de Mars ?</p>
+  <input type="radio" id="q1_1" name="q1" value="0">La planète bleue<br>
+  <input type="radio" id="q1_2" name="q1" value="1">La planète rouge<br>
+  <input type="radio" id="q1_3" name="q1" value="0">La géante gazeuse<br>
+  <input type="radio" id="q1_4" name="q1" value="0">La planète glacée<br>
+  <br>
+  <!-- Q2 -->
+  <p>2. Pourquoi Mars est-elle rouge ?</p>
+  <select id="q2">
+    <option value="1">À cause de l’oxyde de fer</option>
+    <option value="0">À cause de l’eau liquide</option>
+    <option value="0">À cause de ses anneaux</option>
+  </select><br><br>
+  <!-- Q3 -->
+  <p>3. Quelles affirmations décrivent Mars ? (2 réponses)</p>
+  <input type="checkbox" id="q3_1" name="q3" value="1">Elle est appelée la planète rouge<br>
+  <input type="checkbox" id="q3_2" name="q3" value="1">Son sol contient beaucoup d’oxyde de fer<br>
+  <input type="checkbox" id="q3_3" name="q3" value="0">Elle est la plus grande planète<br>
+  <input type="checkbox" id="q3_4" name="q3" value="0">Elle est une géante gazeuse<br>
+  <br>
+  <!-- Q4 -->
+  <p>4. Selon les notes, Mars est associée à...</p>
+  <input type="checkbox" id="q4_1" name="q4" value="1">la couleur rouge<br>
+  <input type="checkbox" id="q4_2" name="q4" value="1">l’oxyde de fer<br>
+  <input type="checkbox" id="q4_3" name="q4" value="0">des anneaux de glace<br>
+  <input type="checkbox" id="q4_4" name="q4" value="0">des vents extrêmement rapides<br>
+  <br>
+  <!-- Q5 -->
+  <p>5. Quelle réponse est fausse pour Mars ?</p>
+  <input type="radio" id="q5_1" name="q5" value="0">Elle est rouge<br>
+  <input type="radio" id="q5_2" name="q5" value="0">Son sol contient de l’oxyde de fer<br>
+  <input type="radio" id="q5_3" name="q5" value="0">Elle est appelée la planète rouge<br>
+  <input type="radio" id="q5_4" name="q5" value="1">Elle est appelée la géante gazeuse<br>
+  <br>
+
+  <button type="button" onclick="calculerScore()">Soumettre</button>
+
+</form>
+
+<h2 id="resultat"></h2>
+<div id="corrections"></div>
+
+<script>
+function calculerScore() {
+  let score = 0;
+  let nom = document.getElementById("txtNom").value;
+  let q2 = document.getElementById("q2").value;
+
+  if (nom === "") {
+    nom = "Élève";
+  }
+
+  // Q1
+  if (document.getElementById("q1_2").checked) {
+    score++;
+  }
+
+  // Q2
+  if (q2 === "1") {
+    score++;
+  }
+
+  // Q3
+  if (document.getElementById("q3_1").checked && document.getElementById("q3_2").checked && !document.getElementById("q3_3").checked && !document.getElementById("q3_4").checked) {
+    score++;
+  }
+
+  // Q4
+  if (document.getElementById("q4_1").checked && document.getElementById("q4_2").checked && !document.getElementById("q4_3").checked && !document.getElementById("q4_4").checked) {
+    score++;
+  }
+
+  // Q5
+  if (document.getElementById("q5_4").checked) {
+    score++;
+  }
+
+  document.getElementById("resultat").innerHTML =
+    nom + ", ton score est : " + score + " / 5";
+
+  if (score === 5) {
+    alert("Bravo! Toutes tes réponses sont bonnes.");
+  } else {
+    alert("Certaines réponses sont incorrectes. Réessaie!");
+  }
+}
+</script>
+
+</body>
+</html>

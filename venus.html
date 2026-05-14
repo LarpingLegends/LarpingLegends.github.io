@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Quiz Vénus</title>
+</head>
+<body>
+
+<h1>Quiz sur Vénus</h1>
+
+<label>Nom :</label>
+<input type="text" id="txtNom"><br><br>
+
+<form>
+
+  <!-- Q1 -->
+  <p>1. Pourquoi Vénus est-elle très chaude ?</p>
+  <input type="radio" id="q1_1" name="q1" value="1">À cause de son atmosphère épaisse qui garde la chaleur<br>
+  <input type="radio" id="q1_2" name="q1" value="0">À cause de ses anneaux<br>
+  <input type="radio" id="q1_3" name="q1" value="0">À cause de sa lune<br>
+  <input type="radio" id="q1_4" name="q1" value="0">À cause de sa petite taille seulement<br>
+  <br>
+  <!-- Q2 -->
+  <p>2. L’atmosphère de Vénus est...</p>
+  <select id="q2">
+    <option value="1">épaisse</option>
+    <option value="0">inexistante</option>
+    <option value="0">faite seulement d’eau</option>
+  </select><br><br>
+  <!-- Q3 -->
+  <p>3. Quelles affirmations décrivent Vénus ? (2 réponses)</p>
+  <input type="checkbox" id="q3_1" name="q3" value="1">Elle est très chaude<br>
+  <input type="checkbox" id="q3_2" name="q3" value="1">Son atmosphère garde la chaleur<br>
+  <input type="checkbox" id="q3_3" name="q3" value="0">Elle est célèbre pour ses anneaux<br>
+  <input type="checkbox" id="q3_4" name="q3" value="0">Elle est la plus froide planète<br>
+  <br>
+  <!-- Q4 -->
+  <p>4. Pourquoi la chaleur reste-t-elle sur Vénus ?</p>
+  <input type="checkbox" id="q4_1" name="q4" value="1">Son atmosphère est épaisse<br>
+  <input type="checkbox" id="q4_2" name="q4" value="1">Elle garde la chaleur<br>
+  <input type="checkbox" id="q4_3" name="q4" value="0">Ses anneaux bloquent le froid<br>
+  <input type="checkbox" id="q4_4" name="q4" value="0">Elle n’a aucune atmosphère<br>
+  <br>
+  <!-- Q5 -->
+  <p>5. Quelle réponse est fausse pour Vénus ?</p>
+  <input type="radio" id="q5_1" name="q5" value="0">Elle est très chaude<br>
+  <input type="radio" id="q5_2" name="q5" value="0">Elle a une atmosphère épaisse<br>
+  <input type="radio" id="q5_3" name="q5" value="0">Elle garde la chaleur<br>
+  <input type="radio" id="q5_4" name="q5" value="1">Elle est très chaude à cause de ses anneaux<br>
+  <br>
+
+  <button type="button" onclick="calculerScore()">Soumettre</button>
+
+</form>
+
+<h2 id="resultat"></h2>
+<div id="corrections"></div>
+
+<script>
+function calculerScore() {
+  let score = 0;
+  let nom = document.getElementById("txtNom").value;
+  let q2 = document.getElementById("q2").value;
+
+  if (nom === "") {
+    nom = "Élève";
+  }
+
+  // Q1
+  if (document.getElementById("q1_1").checked) {
+    score++;
+  }
+
+  // Q2
+  if (q2 === "1") {
+    score++;
+  }
+
+  // Q3
+  if (document.getElementById("q3_1").checked && document.getElementById("q3_2").checked && !document.getElementById("q3_3").checked && !document.getElementById("q3_4").checked) {
+    score++;
+  }
+
+  // Q4
+  if (document.getElementById("q4_1").checked && document.getElementById("q4_2").checked && !document.getElementById("q4_3").checked && !document.getElementById("q4_4").checked) {
+    score++;
+  }
+
+  // Q5
+  if (document.getElementById("q5_4").checked) {
+    score++;
+  }
+
+  document.getElementById("resultat").innerHTML =
+    nom + ", ton score est : " + score + " / 5";
+
+  if (score === 5) {
+    alert("Bravo! Toutes tes réponses sont bonnes.");
+  } else {
+    alert("Certaines réponses sont incorrectes. Réessaie!");
+  }
+}
+</script>
+
+</body>
+</html>

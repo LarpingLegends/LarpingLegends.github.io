@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Quiz Uranus</title>
+</head>
+<body>
+
+<h1>Quiz sur Uranus</h1>
+
+<label>Nom :</label>
+<input type="text" id="txtNom"><br><br>
+
+<form>
+
+  <!-- Q1 -->
+  <p>1. Qu’est-ce qui est spécial chez Uranus ?</p>
+  <input type="radio" id="q1_1" name="q1" value="1">Elle tourne presque sur le côté<br>
+  <input type="radio" id="q1_2" name="q1" value="0">Elle est la plus proche du Soleil<br>
+  <input type="radio" id="q1_3" name="q1" value="0">Elle est rouge<br>
+  <input type="radio" id="q1_4" name="q1" value="0">Elle n’a pas d’atmosphère<br>
+  <br>
+  <!-- Q2 -->
+  <p>2. Uranus est une planète...</p>
+  <select id="q2">
+    <option value="1">froide</option>
+    <option value="0">très chaude comme Vénus</option>
+    <option value="0">petite et très rocheuse comme Mercure</option>
+  </select><br><br>
+  <!-- Q3 -->
+  <p>3. Quelles affirmations décrivent Uranus ? (2 réponses)</p>
+  <input type="checkbox" id="q3_1" name="q3" value="1">Elle est froide<br>
+  <input type="checkbox" id="q3_2" name="q3" value="1">Elle tourne presque sur le côté<br>
+  <input type="checkbox" id="q3_3" name="q3" value="0">Elle est la planète rouge<br>
+  <input type="checkbox" id="q3_4" name="q3" value="0">Elle est la plus proche du Soleil<br>
+  <br>
+  <!-- Q4 -->
+  <p>4. Selon les notes, Uranus est associée à...</p>
+  <input type="checkbox" id="q4_1" name="q4" value="1">une planète froide<br>
+  <input type="checkbox" id="q4_2" name="q4" value="1">une rotation presque sur le côté<br>
+  <input type="checkbox" id="q4_3" name="q4" value="0">la chaleur gardée par une atmosphère épaisse<br>
+  <input type="checkbox" id="q4_4" name="q4" value="0">des anneaux composés de glace et de roches<br>
+  <br>
+  <!-- Q5 -->
+  <p>5. Quelle réponse est fausse pour Uranus ?</p>
+  <input type="radio" id="q5_1" name="q5" value="0">Elle est froide<br>
+  <input type="radio" id="q5_2" name="q5" value="0">Elle tourne presque sur le côté<br>
+  <input type="radio" id="q5_3" name="q5" value="0">Elle n’est pas la plus proche du Soleil<br>
+  <input type="radio" id="q5_4" name="q5" value="1">Elle est la plus proche du Soleil<br>
+  <br>
+
+  <button type="button" onclick="calculerScore()">Soumettre</button>
+
+</form>
+
+<h2 id="resultat"></h2>
+<div id="corrections"></div>
+
+<script>
+function calculerScore() {
+  let score = 0;
+  let nom = document.getElementById("txtNom").value;
+  let q2 = document.getElementById("q2").value;
+
+  if (nom === "") {
+    nom = "Élève";
+  }
+
+  // Q1
+  if (document.getElementById("q1_1").checked) {
+    score++;
+  }
+
+  // Q2
+  if (q2 === "1") {
+    score++;
+  }
+
+  // Q3
+  if (document.getElementById("q3_1").checked && document.getElementById("q3_2").checked && !document.getElementById("q3_3").checked && !document.getElementById("q3_4").checked) {
+    score++;
+  }
+
+  // Q4
+  if (document.getElementById("q4_1").checked && document.getElementById("q4_2").checked && !document.getElementById("q4_3").checked && !document.getElementById("q4_4").checked) {
+    score++;
+  }
+
+  // Q5
+  if (document.getElementById("q5_4").checked) {
+    score++;
+  }
+
+  document.getElementById("resultat").innerHTML =
+    nom + ", ton score est : " + score + " / 5";
+
+  if (score === 5) {
+    alert("Bravo! Toutes tes réponses sont bonnes.");
+  } else {
+    alert("Certaines réponses sont incorrectes. Réessaie!");
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Quiz Neptune</title>
+</head>
+<body>
+
+<h1>Quiz sur Neptune</h1>
+
+<label>Nom :</label>
+<input type="text" id="txtNom"><br><br>
+
+<form>
+
+  <!-- Q1 -->
+  <p>1. Quelle planète est très loin du Soleil et possède des vents rapides ?</p>
+  <input type="radio" id="q1_1" name="q1" value="1">Neptune<br>
+  <input type="radio" id="q1_2" name="q1" value="0">Mercure<br>
+  <input type="radio" id="q1_3" name="q1" value="0">Vénus<br>
+  <input type="radio" id="q1_4" name="q1" value="0">Terre<br>
+  <br>
+  <!-- Q2 -->
+  <p>2. Neptune possède des vents...</p>
+  <select id="q2">
+    <option value="1">extrêmement rapides</option>
+    <option value="0">inexistants</option>
+    <option value="0">faits de glace solide</option>
+  </select><br><br>
+  <!-- Q3 -->
+  <p>3. Quelles affirmations décrivent Neptune ? (2 réponses)</p>
+  <input type="checkbox" id="q3_1" name="q3" value="1">Elle est très loin du Soleil<br>
+  <input type="checkbox" id="q3_2" name="q3" value="1">Elle possède des vents extrêmement rapides<br>
+  <input type="checkbox" id="q3_3" name="q3" value="0">Elle est la plus proche du Soleil<br>
+  <input type="checkbox" id="q3_4" name="q3" value="0">Elle est la planète rouge<br>
+  <br>
+  <!-- Q4 -->
+  <p>4. Selon les notes, Neptune est associée à...</p>
+  <input type="checkbox" id="q4_1" name="q4" value="1">son éloignement du Soleil<br>
+  <input type="checkbox" id="q4_2" name="q4" value="1">des vents rapides<br>
+  <input type="checkbox" id="q4_3" name="q4" value="0">de l’eau liquide et de la vie connue<br>
+  <input type="checkbox" id="q4_4" name="q4" value="0">une surface petite et rocheuse<br>
+  <br>
+  <!-- Q5 -->
+  <p>5. Quelle réponse est fausse pour Neptune ?</p>
+  <input type="radio" id="q5_1" name="q5" value="0">Elle est loin du Soleil<br>
+  <input type="radio" id="q5_2" name="q5" value="0">Elle a des vents rapides<br>
+  <input type="radio" id="q5_3" name="q5" value="0">Elle possède des vents extrêmement rapides<br>
+  <input type="radio" id="q5_4" name="q5" value="1">Elle est la plus proche du Soleil<br>
+  <br>
+
+  <button type="button" onclick="calculerScore()">Soumettre</button>
+
+</form>
+
+<h2 id="resultat"></h2>
+<div id="corrections"></div>
+
+<script>
+function calculerScore() {
+  let score = 0;
+  let nom = document.getElementById("txtNom").value;
+  let q2 = document.getElementById("q2").value;
+
+  if (nom === "") {
+    nom = "Élève";
+  }
+
+  // Q1
+  if (document.getElementById("q1_1").checked) {
+    score++;
+  }
+
+  // Q2
+  if (q2 === "1") {
+    score++;
+  }
+
+  // Q3
+  if (document.getElementById("q3_1").checked && document.getElementById("q3_2").checked && !document.getElementById("q3_3").checked && !document.getElementById("q3_4").checked) {
+    score++;
+  }
+
+  // Q4
+  if (document.getElementById("q4_1").checked && document.getElementById("q4_2").checked && !document.getElementById("q4_3").checked && !document.getElementById("q4_4").checked) {
+    score++;
+  }
+
+  // Q5
+  if (document.getElementById("q5_4").checked) {
+    score++;
+  }
+
+  document.getElementById("resultat").innerHTML =
+    nom + ", ton score est : " + score + " / 5";
+
+  if (score === 5) {
+    alert("Bravo! Toutes tes réponses sont bonnes.");
+  } else {
+    alert("Certaines réponses sont incorrectes. Réessaie!");
+  }
+}
+</script>
+
+</body>
+</html>
