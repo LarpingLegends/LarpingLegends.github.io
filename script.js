@@ -39,4 +39,11 @@ $(window).load(function(){
 
   init();
 
+  const earthPlanet = document.querySelector(".earth-planet");
+  const earthPopup = document.querySelector(".planet-popup");
+  
+  earthPlanet.addEventListener("click", () => {
+    earthPopup.classList.toggle("show");
+  });
+
 });
