@@ -63,6 +63,34 @@ body {
   height: 100%;
   transform-style: preserve-3d; }
 
+#earth .pos {
+  position: relative;
+}
+
+/* Hidden button */
+.planet-popup {
+  position: absolute;
+
+ ottom: 120px; /* ABOVE the planet */
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: none;
+
+  padding: 10px 16px;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+/* Show button */
+.planet-popup.show {
+  display: block;
+}
+
 .orbit {
   position: absolute;
   top: 50%;
