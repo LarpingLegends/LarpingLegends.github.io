@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Quiz Mercure</title>
+</head>
+<body>
+
+<h1>Quiz sur Mercure</h1>
+
+<label>Nom :</label>
+<input type="text" id="txtNom"><br><br>
+
+<form>
+
+  <!-- Q1 -->
+  <p>1. Pourquoi Mercure a-t-elle des températures extrêmes ?</p>
+  <input type="radio" id="q1_1" name="q1" value="0">Elle est couverte d’eau<br>
+  <input type="radio" id="q1_2" name="q1" value="1">Elle n’a presque pas d’atmosphère<br>
+  <input type="radio" id="q1_3" name="q1" value="0">Elle est très loin du Soleil<br>
+  <input type="radio" id="q1_4" name="q1" value="0">Elle produit sa propre chaleur<br>
+  <br>
+  <!-- Q2 -->
+  <p>2. Combien dure une année sur Mercure ?</p>
+  <select id="q2">
+    <option value="0">500 jours</option>
+    <option value="1">88 jours</option>
+    <option value="0">366 jours</option>
+  </select><br><br>
+  <!-- Q3 -->
+  <p>3. Quelles affirmations sont vraies ? (2 réponses)</p>
+  <input type="checkbox" id="q3_1" name="q3" value="1">Plus proche du Soleil<br>
+  <input type="checkbox" id="q3_2" name="q3" value="1">Surface cratérisée<br>
+  <input type="checkbox" id="q3_3" name="q3" value="0">Océans liquides<br>
+  <input type="checkbox" id="q3_4" name="q3" value="0">Atmosphère épaisse<br>
+  <br>
+  <!-- Q4 -->
+  <p>4. Pourquoi Mercure est-elle cratérisée ?</p>
+  <input type="checkbox" id="q4_1" name="q4" value="1">Impacts de météorites<br>
+  <input type="checkbox" id="q4_2" name="q4" value="0">Volcans actifs<br>
+  <input type="checkbox" id="q4_3" name="q4" value="0">Vent<br>
+  <input type="checkbox" id="q4_4" name="q4" value="0">Pluie<br>
+  <br>
+  <!-- Q5 -->
+  <p>5. Mercure a-t-elle une atmosphère ?</p>
+  <input type="radio" id="q5_1" name="q5" value="1">Non, presque inexistante<br>
+  <input type="radio" id="q5_2" name="q5" value="0">Oui, comme la Terre<br>
+  <input type="radio" id="q5_3" name="q5" value="0">Oui, pleine d’oxygène<br>
+  <input type="radio" id="q5_4" name="q5" value="0">Oui, très épaisse<br>
+  <br>
+
+  <button type="button" onclick="calculerScore()">Soumettre</button>
+
+</form>
+
+<h2 id="resultat"></h2>
+<div id="corrections"></div>
+
+<script>
+function calculerScore() {
+  let score = 0;
+  let nom = document.getElementById("txtNom").value;
+  let q2 = document.getElementById("q2").value;
+
+  if (nom === "") {
+    nom = "Élève";
+  }
+
+  // Q1
+  if (document.getElementById("q1_2").checked) {
+    score++;
+  }
+
+  // Q2
+  if (q2 === "1") {
+    score++;
+  }
+
+  // Q3
+  if (document.getElementById("q3_1").checked && document.getElementById("q3_2").checked && !document.getElementById("q3_3").checked && !document.getElementById("q3_4").checked) {
+    score++;
+  }
+
+  // Q4
+  if (document.getElementById("q4_1").checked && !document.getElementById("q4_2").checked && !document.getElementById("q4_3").checked && !document.getElementById("q4_4").checked) {
+    score++;
+  }
+
+  // Q5
+  if (document.getElementById("q5_1").checked) {
+    score++;
+  }
+
+  document.getElementById("resultat").innerHTML =
+    nom + ", ton score est : " + score + " / 5";
+
+  if (score === 5) {
+    alert("Bravo! Toutes tes réponses sont bonnes.");
+  } else {
+    alert("Certaines réponses sont incorrectes. Réessaie!");
+  }
+}
+</script>
+
+</body>
+</html>
