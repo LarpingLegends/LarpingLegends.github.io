@@ -71,7 +71,7 @@ body {
 .planet-popup {
   position: absolute;
 
- ottom: 120px; /* ABOVE the planet */
+ bottom: 120px; /* ABOVE the planet */
   left: 50%;
   transform: translateX(-50%);
 
