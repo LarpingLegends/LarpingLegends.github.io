@@ -17,12 +17,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 body {
   line-height: 1; }
 
-#quizlist {
-  color: #000000;
-  background-color: #FFFFFF;
-  font-weight: bold;
-}
-
 ol, ul {
   list-style: none; }
 
