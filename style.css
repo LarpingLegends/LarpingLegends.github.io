@@ -18,8 +18,8 @@ body {
   line-height: 1; }
 
 #quizlist {
-  color: black;
-  background-color: white;
+  color: #000000;
+  background-color: #FFFFFF;
   font-weight: bold;
 }
 
